@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // //字面量方式创建对象：例：
+        // var obj={x:1,y:2};
+        // console.log(obj.x);
+        // console.log(obj.y);
+    //     //以new/原型链方式创建对象
+    //    function foo(){}
+    // foo.prototype.z=3;
+    // var obj=new foo();
+    // obj.y=2;
+    // obj.x=1;
+    // console.log(obj.x);
+    //     console.log(obj.y);
+    //     console.log(obj.z);
+    //     console.log(typeof obj.toString);
+    //    console.log( 'z' in obj);
+    //     console.log(obj.hasOwnProperty('z'));
+    //     obj.z=5;
+    //     console.log(obj.hasOwnProperty('z'));
+    //     foo.prototype.z=3;
+    //     console.log(obj.z);
+    //     obj.z=undefined;
+    //     console.log(obj.z);
+    //     delete obj.z;
+    //     console.log(obj.z);
+    //     delete obj.z;
+    //     console.log(obj.z);
+    //3. 通过Object.create方式创建对象： 例：
+    var obj=Object.create({x:1});
+    console.log(obj.x);
+    console.log(typeof obj.toString);
+    console.log(obj.hasOwnProperty('x'));
+    var obj =Object.create(null);
+    console.log(obj.toString);
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+       /*  //基于原型的继承
+        function Foo(){
+            this.y=2;
+        }
+        console.log(typeof Foo.prototype);//"object"
+        Foo.prototype.x=1;
+        var obj3=new Foo();
+        console.log(obj3.x);
+        console.log(obj3.y); */
+/* function Person(name,age){
+    this.name=name;
+    this.age=age;
+}
+Person.prototype.hi=function(){
+    console.log('Hi,my name is'+this.name+"I'm"+this.age+"years old now");
+}
+Person.prototype.Legs_num=2;
+Person.prototype.arms_num=2;
+Person.prototype.walk=function(){
+    console.log(this.name+"is walking...");
+};
+function Student(name,age,className){
+    Person.call(this,name,age);
+    this.className=className;
+}
+Student.prototype=Object.create(Person.prototype);
+Student.prototype.constructor=Student;
+Student.prototype.hi=function(){
+    console.log("Hi my name is"+this.age+"years old now,and from"+this.className+".");
+};
+Student.prototype.learn=function(subject){
+    console.log(this.name+'is learning'+subject+'at'+this.className+'.');
+};
+var panpan=new Student('panpan',27,'class 2 Grand 4');
+console.log(panpan.hi());
+console.log(panpan.Legs_num);
+console.log(panpan.walk());
+console.log(panpan.learn('math'));
+Student.prototype.x=101;
+console.log(panpan.x);//101
+Student.prototype={y:2};
+console.log(panpan.y);//undefined
+console.log(panpan.x);//101
+var nunnly =new Student('Nunnly',3,'Class LOL KengB');
+console.log(nunnly.x);//undefined
+console.log(nunnly.y);//2 */
+//内置构造器的prototype
+/* Object.prototype.x=1;
+var obj={};
+for(var key in obj){
+    console.log('result' +key);
+}
+Object.defineProperty(Object.prototype,'x',
+{writable:true,value:1});
+var obj={};
+console.log(obj.x);
+for(var key in obj){
+    console.log('result:'+key);
+} */
+
+  /* //创建对象-new/原型链
+  function foo(){}
+      foo.prototype.z=3;
+  var obj=new foo();
+  obj.y=2;
+  obj.x=1;
+  console.log(obj.x);//1
+  console.log(obj.y);//2
+  console.log(obj.z);//3
+  console.log(typeof obj.toString);//"function"
+  console.log('z' in obj);//'true
+  console.log(obj.hasOwnProperty('z'));//false */
+  /* //实现继承的方式
+  function Person(){
+
+  }
+  function Student(){
+
+  }
+  //第一种方法
+  Student.prototype=Person.prototype;
+  //第二种方法
+  Student.prototype=new Person();
+  //第三中方法
+  Student.prototype=Object.create(Person.prototype);
+  Student.prototype.constructor=Person;
+  //Es5中模拟的
+  if(!Object.create){
+      Object.create=function(proto){
+          function F(){}
+          F.prototype=proto;
+          return new F;
+      }
+  } */
+
+  /* //模拟重载
+  function Person(){
+      var args=arguments;
+      if(typeof args[0]==='object'&&args[0]){
+          if(args[0].name){
+              this.name=args[0].name;
+          }
+          if(args[0].age){
+              this.age=args[0].age;
+          }
+      }else{
+        if(args[0]){
+              this.name=args[0];
+          }
+          if(args[1]){
+              this.age=args[1];
+          }
+      }
+  }
+  Person.prototype.toString=function(){
+      return 'name'+this.name+'age='+this.age;
+  }
+  var bosn=new Person('Bosn',27);
+  console.log(bosn.toString());//27
+  var panpan=new Person({name:'panpan',age:23});
+  console.log(panpan.toString());//23 */
+  /* //调用子类方法
+  function Person(name){
+      this.name=name;
+  }
+  function Student(name,className){
+      this.className=className;
+      Person.call(this,name);
+  }
+  var bosn=new Student('Nosn','Network064');
+  console.log(bosn);//Student {className: "Network064", name: "Nosn"}
+  Person.prototype.init=function(){};
+  Student.prototype.init=function(){
+      Person.prototype.init.apply(this,arguments);
+  } */
+
+ /*  //链式调用
+  function ClassManager(){}
+  ClassManager.prototype.addClass=function(str){
+      console.log('Class'+str+'added');
+      return this;
+  };
+  var manager=new ClassManager();
+  manager.addClass('classA').addClass('classB').addClass('classC');
+  //ClassclassAadded
+//ClassclassBadded
+//ClassclassCadded */
+/* //抽象类
+function DetectorBase(){
+    throw new Error('Abstract class can not be invoked directly!');
+}
+DetectorBase.detect=function(){console.log('Detection starting...');};
+DetectorBase.stop=function(){console.log('Detection stopped...');};
+DetectorBase.init=function(){throw new Error('Error')};
+function LinkDetector(){}
+LinkDetector.prototype=Object.create(DetectorBase.prototype);
+LinkDetector.prototype.constructor=LinkDetector;
+ */
+
+ /* //模块化
+ var moduleA;
+ moduleA=function(){
+     var prop=1;
+     function func(){
+         return {
+            func:func,
+             prop:prop
+         }
+     }
+ }
+
+ var moduleA;
+ moduleA=new function(){
+     var prop=1;
+     function func(){};
+     this.func=func;
+     this.prop=prop;
+ } */
+
+/* //实践-探测器
+ !function(global){
+     function DetectorBase(configs){
+         if(!this instanceof DetectorBase){
+             throw new Error('Do not invoke without new');
+         }
+         this.configs=configs;
+         this.analyze();
+     }
+     DetectorBase.prototype.detect=function(){
+         throw new Error('not implemented');
+     };
+     DetectorBase.prototype.analyze=function(){
+         console.log('analyzing');
+         this.data="###data###";
+     };
+     function LinkDetector(links){
+         if(!this instanceof LinkDetector){
+             throw new Error('Do not invoke without new');
+         }
+         this.links=links;
+         DetectorBase.apply(this,arguments);
+     }
+     function ContainerDetector(contains){
+         if(!this instanceof ContainerDetector){
+             throw new Error('Do not invoke without new ');
+         }
+         this.contains=contains;
+         DetectorBase.apply(this,arguments);
+     }
+     inherit(LinkDetector,DetectorBase);
+     inherit(ContainerDetector,DetectorBase);
+     LinkDetector.prototype.detect=function(){
+         console.log('Loading data'+this.data);
+         console.log('Link detection started');
+         console.log('Scaning links'+this.links);
+     };
+     ContainerDetector.prototype.detect=function(){
+        console.log('Loading data'+this.data);
+         console.log('Link detection started');
+         console.log('Scaning contains'+this.contains);
+     };
+     Object.freeze(DetectorBase);
+     Object.freeze(DetectorBase.prototype);
+     Object.freeze(LinkDetector);
+     Object.freeze(LinkDetector.prototype);
+     Object.freeze(ContainerDetector);
+     Object.freeze(ContainerDetector.prototype);
+     Object.defineProperties(global,{
+         LinkDetector:{value:LinkDetector},
+         ContainerDetector:{value:ContainerDetector},
+         DetectorBase:{value:DetectorBase}
+
+     });
+     function inherit(subClass,superClass){
+         subClass.prototype=Object.create(superClass.prototype);
+         subClass.prototype.constructor=subClass;
+     }
+ }(this);
+ var cd=new ContainerDetector('#abc #def #ghi');
+ var ld=new LinkDetector('http://www.taobao.com http://www.tmall.com http://www.baidu.com');
+ console.log(cd.detect());
+ console.log(ld.detect());
+  */
+
+    </script>
+</body>
+</html>

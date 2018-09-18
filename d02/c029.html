@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+       //属性标签
+       console.log(Object.getOwnPropertyDescriptor({pro:true},'pro'));
+console.log(Object.getOwnPropertyDescriptor({pro:true},'a'));
+var person={};
+Object.defineProperty(person,'name',{
+    configurable:false,
+    writable:false,
+    enumerable:true,
+    value:"panpan"
+});
+console.log(person.name);
+person.name=1;
+console.log(person.name);
+delete person.name;
+console.log(delete person.name);
+Object.defineProperty(person,'type',{
+    configurable:true,
+    writable:true,
+    enumerable:false,
+    value:"Object"
+});
+console.log(Object.keys(person));
+
+Object.defineProperties(person,{
+    title:{value:'fe',enumerable:true},
+    corp:{value:'BABA',enumerable:true},
+    level:{value:0, enumerable:false, writable: true, configurable: false },
+    salary:{value:50000,enumerabnle:true,writable:true},
+    lunck:{
+        get:function(){
+            return Math.random()>0.5 ? 'good':'bad';
+        }
+    },
+    promote:{
+        get:function(){
+            return this.level;
+        },
+        set:function(level){
+            this.level = level;
+            this.salary*=1+level*0.1;
+        }
+    }
+});
+console.log(Object.getOwnPropertyDescriptor(person,'salary'));
+console.log(Object.getOwnPropertyDescriptor(person,'corp'));
+console.log(person.salary);
+console.log(person.promote);
+person.salary=6000;
+console.log(person.salary);
+   </script> 
+</body>
+</html>

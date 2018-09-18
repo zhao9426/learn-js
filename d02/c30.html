@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+  <script>
+      //对象标签
+      /* var toString=Object.prototype.toString;
+      function getType(o){
+          return toString.call(o).slice(8,-3);
+      }
+      console.log(toString.call(null));
+      console.log(getType(null));
+      console.log(getType(undefined));
+      console.log(getType(1));
+      console.log(getType(new Number(1)));
+      console.log(typeof new Number(1));
+      console.log(getType(true));
+      console.log(getType(new Boolean(true)));
+ */
+    /*   var a = {
+          name: "Laitou",
+          showName(){
+              console.log("a:",this.name)
+          }
+      }
+      var b = {
+          name: "King"
+      }
+      a.showName()
+      a.showName.call(b)
+      a.showName.apply(b) */
+   /*    var animals = [
+  {species: 'Lion', name: 'King'},
+  {species: 'Whale', name: 'Fail'}
+];
+for(var i=0;i<animals.length;i++){
+    console.log("#"+i+""+animals[i].species+""+animals[i].name);
+    
+}
+
+// for (var i = 0; i < animals.length; i++) {
+//   (function (i) { 
+//     this.print = function () { 
+//       console.log('#' + i  + ' ' + this.species + ': ' + this.name); 
+//     } 
+//     this.print();
+//   }).call(animals[i], i);
+// } */
+
+
+/* var obj={x:1,y:2};
+console.log(Object.isExtensible(obj));
+Object.preventExtensions(obj);
+console.log(Object.isExtensible(obj));
+obj.z=1;
+console.log(obj.z);
+console.log(Object.getOwnPropertyDescriptor(obj,'x'));
+console.log(Object.seal(obj));
+console.log(Object.getOwnPropertyDescriptor(obj,'x'));
+console.log(Object.isSealed(obj));
+console.log(Object.freeze(obj));
+console.log(Object.getOwnPropertyDescriptor(obj,'x'));
+console.log(Object.isFrozen(obj)); */
+/* 序列化
+var obj={x:1,y:true,z:[1,2,3],nullVal:null};
+console.log(JSON.strin
+gify(obj));
+obj={varl:undefined,a:NaN,b:Infinity,c:new Date()}
+console.log(JSON.stringify(obj));
+obj=JSON.parse('{"x":1}');
+console.log(obj.x); */
+/* //序列化自定义
+var obj={
+    x:1,
+    y:2,
+    o:{
+        o1:1,
+        o2:2,
+        toJSON:function(){
+            return this.o1+this.o2;
+        }
+    }
+};
+console.log(JSON.stringify(obj)); */
+
+var obj={x:1,y:2};
+console.log(obj.toString());
+obj.toString=function(){
+    return this.x+this.y;
+};
+console.log("Result"+obj);
+console.log(+obj);
+obj.valueOf=function(){
+    return this.x+this.y+100;
+};
+console.log(+obj);
+console.log("Result"+obj);
+
+  </script>  
+</body>
+</html>

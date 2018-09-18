@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+   /*  //不同函数
+    function outer(){
+        var localVal=30;
+        return localVal;
+    }
+    console.log(outer());//30调用后localVal被释放了
+    //闭包函数
+    function outer(){
+        var localVal=30;
+        return function(){
+            return localVal
+        }
+    }
+    var func=outer();
+    console.log(func());//调用后locaVal没被释放 */
+
+   /*  !function(){
+        var localData="localData here";
+        document.addEventListener('click',
+        function(){
+            console.log(localData);
+        });
+    }();
+
+    // !function(){
+    //     var localData="localData here";
+    //     var url="http://www.baidu.com/"
+    //     $.ajax({
+    //         url:url,
+    //         success:function(){
+    //             console.log(localData);
+    //         }
+    //     });
+    // }(); */
+
+   /*  // document.body.innerHTML="<div id=div1>aaa</div>"+"<div id=div2>bbb</div>"+"<div id=div3>ccc</div>"
+    // for(var i=1;i<4;i++){
+    //     document.getElementById('div'+i).
+    //     addEventListener('click',function(){
+    //         alert(i);//all are 4
+    //     })
+    // }
+    // document.body.innerHTML="<div id=div1>aaa</div>"+"<div id=div2>bbb</div>"+"<div id=div3>ccc</div>"
+    // for(var i=1;i<4;i++){
+    //     !function(i){
+    //         document.getElementById('div'+i).
+    //         addEventListener('click',function(){
+    //             alert(i);//1,2,3
+    //         })
+    //     }(i);
+    // } */
+   /*  //闭包-封装
+    (function(){
+        var _userId=2355;
+        var _typeId='item';
+        var expor={};
+        function converter(userId){
+            return +userId;
+        }
+        expor.getUserId=function(){
+            return converter(_userId);
+        }
+        expor.getTypeId=function(){
+            return _typeId;
+        }
+        window.expor=expor;
+    }());
+    console.log(expor.getUserId());//2355
+    console.log(expor.getTypeId());//item
+    console.log(expor._userId);//undefined
+   console.log(expor._typeId);//undefined
+    console.log(expor.converter);//undefined */
+/* //全局、函数、eval作用域
+var a=10;//全局
+(function(){
+    var b=20;//局部
+})();
+console.log(a);//10
+//console.log(b);//error
+for(var item in {a:1,b:2}){
+    console.log(item);
+}
+console.log(item);//item
+console.log(eval("var a=1;")); */
+//作用域链
+function outer2(){
+    var local2=1;
+    function outer1(){
+        var local1=1;
+    }
+    console.log(outer1());
+}
+var global3=1;
+console.log(outer2());
+function outer(){
+    var i=1;
+    var func=new Function("console.log(typeof i");
+    func();
+    outer();
+}
+
+
+    </script>
+</body>
+</html>

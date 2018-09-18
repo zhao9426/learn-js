@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+   <script>
+    //读写属性操作
+    //    var obj={x:1,y:2};
+    //    console.log(obj.x);
+    //    console.log(obj['y']);
+    //    obj["x"]=3;
+    //    console.log(obj["x"]);
+    //    obj.y=4;
+    //    console.log(obj.y);
+
+    // var obj={x1:1,x2:2};
+    // var i=1,n=2;
+    // for(;i<=n;i++){
+    //     console.log(obj['x'+i]);
+    // }
+    // var p;
+    // for(p in obj){
+    //     console.log(obj[p]);
+    // }
+    //属性读写-异常
+//     var obj={x:1};
+//     console.log(obj.y);//undefined
+//  var yz=obj.y.z//Uncaught TypeError: Cannot read property 'z' of undefined
+
+//  console.log(obj.y.z=2);//Uncaught TypeError: Cannot read property 'z' of undefined
+//属性删除
+// var Person={age:28,title:'fe'};
+// console.log(delete Person.age);
+// console.log(delete Person['title']);
+// console.log(Person.age);
+// console.log(delete Person.age);
+// console.log(delete Object.prototype);
+// var descriptor=Object.getOwnPropertyDescriptor(Object,'prototype');
+// console.log(descriptor.configurable);
+// var globalVal=1;
+// console.log(delete globalVal);
+// (function(){
+//     var globalVal=1;
+// return console.log(delete globalVal);
+// }())
+// function fd(){}
+// console.log(delete globalVal);
+
+// (function(){
+//     function fd(){
+//         return console.log(delete fd);
+//     }
+// }());
+// ohNo=1;
+// console.log(window.ohNo);
+// console.log(delete ohNo);
+//属性检测
+// var cat=new Object;
+// cat.legs=4;
+// cat.nmae="kitty";
+// console.log('legs' in cat);
+// console.log("'abc" in cat);
+// console.log(cat.hasOwnProperty('legs'));
+// console.log(cat.hasOwnProperty('toString'));
+// console.log(cat.propertyIsEnumerable('legs'));
+// console.log(cat.propertyIsEnumerable('toString'));
+// Object.defineProperty(cat,'price',{enumerable:false,value:1000});
+// console.log(cat.propertyIsEnumerable('price'));
+// console.log(cat.hasOwnProperty('price'));
+// if(cat&&cat.legs){
+//    console.log(cat.legs*=2);
+// }
+// if(cat.legs!=undefined){
+//     console.log(cat.legs*=2);
+// }
+// if(cat.legs!==undefined){
+//     console.log(cat.legs*=2);
+// }
+//属性枚举
+// var o={x:1,y:2};
+// console.log('toString' in o);
+// console.log(o.propertyIsEnumerable('toString'));
+// var key;
+// for(key in o){
+//     console.log(key);
+// }
+// var obj=Object.create(o);
+// obj.a=4;
+// var key;
+// for(key in obj){
+//     console.log(key);
+// }
+// var obj=Object.create(o);
+// obj.a=4;
+// var key;
+// for(key in obj){
+//     if(obj.hasOwnProperty(key)){
+//         console.log(key);
+//     }
+// }
+//属性getter/setter方法
+// var man={
+//     name:'盼盼',
+//     weixin:'laitou',
+//     age:10,
+//     // get age(){
+//     //     return new Date().getFullYear()-1995;
+//     // },
+//     // set age(val){
+//     //     console.log('Age can\'t be set to'+val);
+//     // }
+// }
+
+// var a = new man();
+// console.log(a)
+// console.log('Age can\'t be set to'+man.age);
+// console.log(man);
+// console.log(man.age);
+// man.age=100;
+// console.log(man.age);
+// // var man={
+//     weixin:'laitou',
+//     $age:null,
+//     get age(){
+//         if(this.$age==undefined){
+//             return new Date().getFullYear()-1995;
+//         }else{
+//             return this.$age;
+//         }
+//     },
+//     set age(val){
+//         val=+val;
+//         if(!isNaN(val)&&val>0&&val<150){
+//             this.$age=+val;
+//         }else{
+//             throw new Error('Incorrect val='+val);
+//         }
+//     }
+// }
+// console.log(man.age);
+// man.age=100;
+// console.log(man.age);
+// man.age='abc';
+// var man={
+//     weixin:'laitou',
+//     $age:null,
+//     get age(){
+//         if(this.$age==undefined){
+//             return new Date().getFullYear()-1995;
+//         }else{
+//             return this.$age;
+//         }
+//     },
+//     set age(val){
+//         val=+val;
+//         if(!isNaN(val)&&val>0&&val<150){
+//             this.$age=+val;
+//         }else{
+//             throw new Error('Incorrect val='+val);
+//         }
+//     }
+// }
+// console.log(man.age);
+// man.age=100;
+// console.log(man.age);
+// //man.age='abc';
+// function foo(){};
+// Object.defineProperty(foo.prototype,'z',{get:function(){
+//     return 1;
+// }});
+// var obj=new foo();
+// console.log(obj.z);
+// obj.z=10;
+// console.log(obj.z);
+
+
+</script> 
+</body>
+</html>
