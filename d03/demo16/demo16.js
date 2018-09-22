@@ -33,7 +33,9 @@ var box=new Date(2018,9,20,17,48,45,15);
 box.setUTCFullYear(2018);
 alert(box.getUTCFullYear());//2018
 
- */
+
 
 var box=new Date();
 alert(box.getFullYear()+'-'+box.getMonth()+'-'+box.getDay());
+
+ */

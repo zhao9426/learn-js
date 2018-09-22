@@ -44,8 +44,11 @@ var pattern=/Box/i;//不区分大小写
 var str='box';
 alert(pattern.exec(str));//box,返回的是数组，类型是Object，有就返回数组的值，没有就返回null
 
+var pattern=/Box/i;//不区分大小写
+var str='ssss';
+alert(pattern.exec(str));//null,如果没有匹配到就返回null
+
  */
 var pattern=/Box/i;//不区分大小写
 var str='ssss';
-alert(pattern.exec(str));//box,返回的是数组，有就返回数组的值，没有就返回null
-
+alert(pattern.exec(str));//null,如果没有匹配到就返回null
